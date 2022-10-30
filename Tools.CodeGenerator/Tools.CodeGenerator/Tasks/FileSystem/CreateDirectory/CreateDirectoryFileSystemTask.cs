@@ -8,6 +8,7 @@ public class CreateDirectoryFileSystemTask
 {
     CreateDirectoryFileSystemResult CreateDirectory(CreateDirectoryFileSystemInput createDirectoryFileSystemInput)
     {
+        // Validate Input
         try
         {
             createDirectoryFileSystemInput.Validate();
@@ -17,6 +18,7 @@ public class CreateDirectoryFileSystemTask
             throw;
         }
 
+        // Check if directory exists & delete if requested
         if (Directory.Exists($@".\{createDirectoryFileSystemInput.Path}") && createDirectoryFileSystemInput.OverWrite == true)
         {
             try
@@ -33,6 +35,7 @@ public class CreateDirectoryFileSystemTask
             return new CreateDirectoryFileSystemResult { Sucssesful = false, DirectoryAlreadyExists = true };
         }
 
+        // Create directory
         try
         {
             Directory.CreateDirectory($@".\{createDirectoryFileSystemInput.Path}");
