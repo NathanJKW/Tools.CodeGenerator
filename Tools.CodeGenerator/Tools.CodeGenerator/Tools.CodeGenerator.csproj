@@ -17,5 +17,30 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="6.0.541" />
     <PackageReference Include="MudBlazor" Version="6.0.17" />
   </ItemGroup>
+	         
+  
+  <ItemGroup>
+    <None Update="Templates\ApiTask\TaskTemplateInput.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\TaskTemplateResult.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\TaskTemplateRoute.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\TaskTemplateTask.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\TaskTemplateTaskDependancyException.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\TaskTemplateTaskException.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\TaskTemplateTaskValidationException.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>
