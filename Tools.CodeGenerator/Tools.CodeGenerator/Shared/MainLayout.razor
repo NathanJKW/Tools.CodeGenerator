@@ -1,10 +1,10 @@
 ﻿@inherits LayoutComponentBase
 
 <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
-<MudDialogProvider/>
-<MudSnackbarProvider/>
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-<MudLayout>
+@*<MudLayout>
     <MudAppBar Elevation="1" Dense=true>
         <MudIcon Icon="@Icons.Filled.Dashboard" />
         <MudText Typo="Typo.h5" Class="ml-3">Template App</MudText>
@@ -18,7 +18,22 @@
     <MudMainContent Variant="@DrawerVariant.Persistent">
             @Body
     </MudMainContent>
-</MudLayout>
+</MudLayout>*@
+
+
+
+<MudDrawerContainer Class="mud-height-full">
+    <MudDrawer Open=true Elevation="0" Variant="@DrawerVariant.Persistent">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Hi Nathan</MudText>
+        </MudDrawerHeader>
+        <NavMenu />
+    </MudDrawer>
+    <div class="mud-height-full">
+        @Body
+    </div>
+</MudDrawerContainer>
+
 
 
 @code {
