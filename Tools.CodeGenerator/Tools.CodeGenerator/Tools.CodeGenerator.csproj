@@ -20,25 +20,40 @@
 	         
   
   <ItemGroup>
-    <None Update="Templates\ApiTask\TaskTemplateInput.tpl">
+    <None Update="Templates\ApiTask\ResourceFolderTaskFolderException.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\ApiTask\TaskTemplateResult.tpl">
+    <None Update="Templates\ApiTask\ResourceFolderTaskFolderInput.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\ApiTask\TaskTemplateRoute.tpl">
+    <None Update="Templates\ApiTask\ResourceFolderTaskFolderResult.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\ApiTask\TaskTemplateTask.tpl">
+    <None Update="Templates\ApiTask\ResourceFolderTaskFolderRoute.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\ApiTask\TaskTemplateTaskDependancyException.tpl">
+    <None Update="Templates\ApiTask\ResourceFolderTaskFolderTask.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\ApiTask\TaskTemplateTaskException.tpl">
+    <None Update="Templates\ApiTask\Resource\TaskFolder\TaskTemplateInput.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\ApiTask\TaskTemplateTaskValidationException.tpl">
+    <None Update="Templates\ApiTask\Resource\TaskFolder\TaskTemplateResult.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\Resource\TaskFolder\TaskTemplateRoute.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\Resource\TaskFolder\TaskTemplateTask.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\Resource\TaskFolder\Exceptions\TaskTemplateTaskDependancyException.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\Resource\TaskFolder\Exceptions\TaskTemplateTaskException.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\ApiTask\Resource\TaskFolder\Exceptions\TaskTemplateTaskValidationException.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

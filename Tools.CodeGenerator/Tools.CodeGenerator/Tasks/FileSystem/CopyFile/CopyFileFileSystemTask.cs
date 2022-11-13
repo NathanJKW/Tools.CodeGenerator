@@ -6,7 +6,7 @@ namespace Tools.CodeGenerator.Tasks.FileSystem.CopyFile;
 
 public class CopyFileFileSystemTask
 {
-    CopyFileFileSystemResult CopyFile(CopyFileFileSystemInput copyFileFileSystemInput)
+    public CopyFileFileSystemResult CopyFile(CopyFileFileSystemInput copyFileFileSystemInput)
     {
 		//Validate Input
 		try

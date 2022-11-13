@@ -6,7 +6,7 @@ namespace Tools.CodeGenerator.Tasks.FileSystem.CreateDirectory;
 
 public class CreateDirectoryFileSystemTask
 {
-    CreateDirectoryFileSystemResult CreateDirectory(CreateDirectoryFileSystemInput createDirectoryFileSystemInput)
+    public CreateDirectoryFileSystemResult CreateDirectory(CreateDirectoryFileSystemInput createDirectoryFileSystemInput)
     {
         // Validate Input
         try

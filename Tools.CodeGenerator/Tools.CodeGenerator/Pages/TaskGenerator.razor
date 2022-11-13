@@ -1,13 +1,107 @@
 ﻿@page "/TaskGenerator"
+@using System.IO
+@using Tools.CodeGenerator.Tasks.FileSystem.CopyFile
+@using Tools.CodeGenerator.Tasks.FileSystem.CreateDirectory
 
+@inject CopyFileFileSystemTask _copyFileFileSystemTask
+@inject CreateDirectoryFileSystemTask _createDirectoryFileSystemTask
+
+
+<MudTextField @bind-Value="ProjectName" Label="Project Name" Variant="Variant.Outlined" />
+<MudTextField @bind-Value="TaskFolderName" Label="TaskFolder Name" Variant="Variant.Outlined" />
+<MudTextField @bind-Value="ResourceName" Label="Resource Name" Variant="Variant.Outlined" />
+<MudTextField @bind-Value="TaskName" Label="Task Name" Variant="Variant.Outlined" />
+<MudText><b>Name:</b> @ProjectName.@TaskFolderName.@ResourceName.@TaskName </MudText>
+
+@foreach (var item in templateFiles)
+{
+    <MudText><b>Template File:</b> @item </MudText>
+}
+
+@foreach (var item in NameSpaces)
+{
+    <MudText><b>Namespace:</b> @item </MudText>
+}
 
 <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="IncrementCount">Primary</MudButton>
 
 
 
 @code {
+    public string ProjectName { get; set; } = string.Empty;
+    public string TaskFolderName { get; set; } = string.Empty;
+    public string ResourceName { get; set; } = string.Empty;
+    public string TaskName { get; set; } = string.Empty;
+    List<string> templateFiles = new List<string>();
+    List<string> NameSpaces = new List<string>();
+
+
     void IncrementCount()
     {
+        string[] entries = Directory.GetFileSystemEntries(@".\Templates", "*", SearchOption.AllDirectories);
+        string[] directories = Directory.EnumerateDirectories(@".\Templates").ToArray();
 
+        string ResouceFolder = $@".\Output\{TaskFolderName}\{ResourceName}";
+        string TaskFolder = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}";
+
+        string SourceExceptionsFile = $@".\Templates\ApiTask\ResourceFolderTaskFolderException.tpl";
+        string SourceInputFile = $@".\Templates\ApiTask\ResourceFolderTaskFolderInput.tpl";
+        string SourceResultFile = $@".\Templates\ApiTask\ResourceFolderTaskFolderResult.tpl";
+        string SourceRouteFile = $@".\Templates\ApiTask\ResourceFolderTaskFolderRoute.tpl";
+        string SourceTaskFile = $@".\Templates\ApiTask\ResourceFolderTaskFolderTask.tpl";
+
+        string DestinationExceptionsFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Exceptions.cs";
+        string DestinationInputFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Input.cs";
+        string DestinationResultFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Result.cs";
+        string DestinationRouteFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Route.cs";
+        string DestinationTaskFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Task.cs";
+
+        _createDirectoryFileSystemTask.CreateDirectory(new CreateDirectoryFileSystemInput
+            {
+                Path = ResouceFolder,
+                OverWrite = false
+            });
+
+        _createDirectoryFileSystemTask.CreateDirectory(new CreateDirectoryFileSystemInput
+            {
+                Path = TaskFolder,
+                OverWrite = false
+            });
+
+        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
+            {
+                SourcePath = SourceExceptionsFile,
+                DestiniationPath = DestinationExceptionsFile,
+                OverWrite = true
+            });
+
+        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
+            {
+                SourcePath = SourceInputFile,
+                DestiniationPath = DestinationInputFile,
+                OverWrite = true
+            });
+
+        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
+            {
+                SourcePath = SourceResultFile,
+                DestiniationPath = DestinationResultFile,
+                OverWrite = true
+            });
+
+        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
+            {
+                SourcePath = SourceRouteFile,
+                DestiniationPath = DestinationRouteFile,
+                OverWrite = true
+            });
+
+        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
+            {
+                SourcePath = SourceTaskFile,
+                DestiniationPath = DestinationTaskFile,
+                OverWrite = true
+            });
     }
+
 }

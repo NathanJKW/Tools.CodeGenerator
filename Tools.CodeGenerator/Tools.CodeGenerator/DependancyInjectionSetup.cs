@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MudBlazor.Services;
+using Tools.CodeGenerator.Tasks.FileSystem.CopyFile;
+using Tools.CodeGenerator.Tasks.FileSystem.CreateDirectory;
 
 namespace Tools.CodeGenerator
 {
@@ -9,6 +11,8 @@ namespace Tools.CodeGenerator
         {
             serviceCollection.AddWpfBlazorWebView();
             serviceCollection.AddMudServices();
+            serviceCollection.AddTransient<CopyFileFileSystemTask>();
+            serviceCollection.AddTransient<CreateDirectoryFileSystemTask>();
         }
     }
 }
