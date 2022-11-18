@@ -2,6 +2,7 @@
 using MudBlazor.Services;
 using Tools.CodeGenerator.Tasks.FileSystem.CopyFile;
 using Tools.CodeGenerator.Tasks.FileSystem.CreateDirectory;
+using Tools.CodeGenerator.Tasks.FileSystem.ReplaceStringInFile;
 
 namespace Tools.CodeGenerator
 {
@@ -13,6 +14,7 @@ namespace Tools.CodeGenerator
             serviceCollection.AddMudServices();
             serviceCollection.AddTransient<CopyFileFileSystemTask>();
             serviceCollection.AddTransient<CreateDirectoryFileSystemTask>();
+            serviceCollection.AddTransient<ReplaceStringInFileFileSystemTask>();
         }
     }
 }

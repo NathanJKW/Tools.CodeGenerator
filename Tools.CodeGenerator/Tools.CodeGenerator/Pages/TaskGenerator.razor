@@ -2,9 +2,11 @@
 @using System.IO
 @using Tools.CodeGenerator.Tasks.FileSystem.CopyFile
 @using Tools.CodeGenerator.Tasks.FileSystem.CreateDirectory
+@using Tools.CodeGenerator.Tasks.FileSystem.ReplaceStringInFile
 
 @inject CopyFileFileSystemTask _copyFileFileSystemTask
 @inject CreateDirectoryFileSystemTask _createDirectoryFileSystemTask
+@inject ReplaceStringInFileFileSystemTask _replaceStringInFileFileSystemTask
 
 
 <MudTextField @bind-Value="ProjectName" Label="Project Name" Variant="Variant.Outlined" />
@@ -68,40 +70,44 @@
                 OverWrite = false
             });
 
-        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
-            {
-                SourcePath = SourceExceptionsFile,
-                DestiniationPath = DestinationExceptionsFile,
-                OverWrite = true
-            });
+        CopyFile(SourceExceptionsFile, DestinationExceptionsFile, true);
+        ReplaceText(DestinationExceptionsFile, "{$NameSpace}", $"{ProjectName}.{TaskFolderName}.{ResourceName}.{TaskName}");
+        ReplaceText(DestinationExceptionsFile, "{$ClassName}", $"{ResourceName}{TaskName}Exceptions");
 
-        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
-            {
-                SourcePath = SourceInputFile,
-                DestiniationPath = DestinationInputFile,
-                OverWrite = true
-            });
+        CopyFile(SourceInputFile, DestinationInputFile, true);
+        ReplaceText(DestinationInputFile, "{$NameSpace}", $"{ProjectName}.{TaskFolderName}.{ResourceName}.{TaskName}");
+        ReplaceText(DestinationInputFile, "{$ClassName}", $"{ResourceName}{TaskName}Input");
 
-        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
-            {
-                SourcePath = SourceResultFile,
-                DestiniationPath = DestinationResultFile,
-                OverWrite = true
-            });
+        CopyFile(SourceResultFile, DestinationResultFile, true);
+        ReplaceText(DestinationResultFile, "{$NameSpace}", $"{ProjectName}.{TaskFolderName}.{ResourceName}.{TaskName}");
+        ReplaceText(DestinationResultFile, "{$ClassName}", $"{ResourceName}{TaskName}Result");
 
-        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
-            {
-                SourcePath = SourceRouteFile,
-                DestiniationPath = DestinationRouteFile,
-                OverWrite = true
-            });
+        CopyFile(SourceRouteFile, DestinationRouteFile, true);
+        ReplaceText(DestinationRouteFile, "{$NameSpace}", $"{ProjectName}.{TaskFolderName}.{ResourceName}.{TaskName}");
+        ReplaceText(DestinationRouteFile, "{$ClassName}", $"{ResourceName}{TaskName}Route");
 
-        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
+        CopyFile(SourceTaskFile, DestinationTaskFile, true);
+        ReplaceText(DestinationTaskFile, "{$NameSpace}", $"{ProjectName}.{TaskFolderName}.{ResourceName}.{TaskName}");
+        ReplaceText(DestinationTaskFile, "{$ClassName}", $"{ResourceName}{TaskName}Task");
+    }
+
+    void ReplaceText(string path, string stringToFind, string stringToReplace)
+    {
+        _replaceStringInFileFileSystemTask.ExecuteTask(new ReplaceStringInFileFileSystemInput
             {
-                SourcePath = SourceTaskFile,
-                DestiniationPath = DestinationTaskFile,
-                OverWrite = true
+                Path = path,
+                StringToFind = stringToFind,
+                StringToReplace = stringToReplace
             });
     }
 
+    void CopyFile(string sourcePath, string destinationPath, bool overWrite)
+    {
+        _copyFileFileSystemTask.CopyFile(new CopyFileFileSystemInput
+            {
+                SourcePath = sourcePath,
+                DestiniationPath = destinationPath,
+                OverWrite = overWrite
+            });
+    }
 }
