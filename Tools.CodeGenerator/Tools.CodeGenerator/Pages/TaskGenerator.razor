@@ -43,11 +43,11 @@
         string SourceRouteFile = $@".\Templates\ApiTask\ResourceFolderTaskFolderRoute.tpl";
         string SourceTaskFile = $@".\Templates\ApiTask\ResourceFolderTaskFolderTask.tpl";
 
-        string DestinationExceptionsFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Exceptions.cs";
-        string DestinationInputFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Input.cs";
-        string DestinationResultFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Result.cs";
-        string DestinationRouteFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Route.cs";
-        string DestinationTaskFile = $@".\Output\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Task.cs";
+        string DestinationExceptionsFile = $@".\Output\{ProjectName}\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Exceptions.cs";
+        string DestinationInputFile = $@".\Output\{ProjectName}\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Input.cs";
+        string DestinationResultFile = $@".\Output\{ProjectName}\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Result.cs";
+        string DestinationRouteFile = $@".\Output\{ProjectName}\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Route.cs";
+        string DestinationTaskFile = $@".\Output\{ProjectName}\{TaskFolderName}\{ResourceName}\{TaskName}\{ResourceName}{TaskName}Task.cs";
 
         _createDirectoryFileSystemTask.CreateDirectory(new CreateDirectoryFileSystemInput
             {
