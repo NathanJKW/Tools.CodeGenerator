@@ -1,5 +1,6 @@
 ﻿@page "/TaskGenerator"
 @using System.IO
+@using System.Diagnostics;
 @using Tools.CodeGenerator.Tasks.FileSystem.CopyFile
 @using Tools.CodeGenerator.Tasks.FileSystem.CreateDirectory
 @using Tools.CodeGenerator.Tasks.FileSystem.ReplaceStringInFile
@@ -16,8 +17,8 @@
 <MudText><b>Name:</b> @ProjectName.@TaskFolderName.@ResourceName.@TaskName </MudText>
 
 
-<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="IncrementCount">Primary</MudButton>
-<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="IncrementCount">Open Folder</MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="IncrementCount">Generate</MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="OpenFolder">Open Folder</MudButton>
 
 
 @code {
@@ -28,6 +29,23 @@
     List<string> templateFiles = new List<string>();
     List<string> NameSpaces = new List<string>();
 
+    void OpenFolder()
+    {
+        if (Directory.Exists(@".\Output\"))
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    Arguments = @".\Output\",
+                    FileName = "explorer.exe"
+                };
+
+            Process.Start(startInfo);
+        }
+        else
+        {
+
+        }
+    }
 
     void IncrementCount()
     {
