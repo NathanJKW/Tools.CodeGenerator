@@ -15,18 +15,9 @@
 <MudTextField @bind-Value="TaskName" Label="Task Name" Variant="Variant.Outlined" />
 <MudText><b>Name:</b> @ProjectName.@TaskFolderName.@ResourceName.@TaskName </MudText>
 
-@foreach (var item in templateFiles)
-{
-    <MudText><b>Template File:</b> @item </MudText>
-}
-
-@foreach (var item in NameSpaces)
-{
-    <MudText><b>Namespace:</b> @item </MudText>
-}
 
 <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="IncrementCount">Primary</MudButton>
-
+<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="IncrementCount">Open Folder</MudButton>
 
 
 @code {
